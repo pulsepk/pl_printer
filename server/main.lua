@@ -63,6 +63,9 @@ function AddItem(source, amount, imageName)
         end
     elseif GetResourceState('ox_inventory') == 'started' then
         exports.ox_inventory:AddItem(src,Config.ItemName,amount,imageName,false)
+    elseif GetResourceState('tgiann-inventory') == 'started' then
+        local metadata = info
+        exports['tgiann-inventory']:AddItem(src,Config.ItemName,amount,nil,metadata,false)
     end
 end
 

@@ -8,6 +8,7 @@
 - Support ESX, QBCore, QBox Frameworks
 - Print Any Document You Want
 - Spawns Printer at any location
+- Supports qb-inventory, ox_inventory, tgiann-inventory
 - qb-target, qtarget, ox_target
 - Deduct Money For Prints
 
