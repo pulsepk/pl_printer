@@ -4,7 +4,7 @@ lua54 'yes'
 
 name 'Printer Script'
 author 'PulseScripts - pulsescripts.com'
-version '1.0.6'
+version '1.0.7'
 
 ui_page 'web/index.html'
 
