@@ -48,3 +48,13 @@ function HasItem(playerSource)
     end
 end
 
+ESX.RegisterUsableItem(Config.ItemName, function(source, itemData)
+    local xPlayer = ESX.GetPlayerFromId(source)
+
+    if itemData and itemData.info then
+        local imageId = itemData.info.id or "default_id"
+        TriggerEvent('pl_printer:fetchImageLink', imageId, source)
+    else
+        print("^1[Error]^7 Item used has no metadata (info) attached.")
+    end
+end)

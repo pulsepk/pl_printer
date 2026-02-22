@@ -40,8 +40,13 @@ function HasItem(playerSource)
     end
 end
 
-QBCore.Functions.CreateUseableItem(Config.ItemName, function(source)
+QBCore.Functions.CreateUseableItem(Config.ItemName, function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
-    local item = Player.Functions.GetItemByName(Config.ItemName)
-    TriggerEvent('pl_printer:fetchImageLink',item.info.id,Player.PlayerData.source)
+
+    if item and item.info then
+        local imageId = item.info.id
+        TriggerEvent('pl_printer:fetchImageLink', imageId, source)
+    else
+        QBCore.Functions.Notify(source, "This item appears to be blank or corrupted.", "error")
+    end
 end)
