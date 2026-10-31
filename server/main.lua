@@ -34,6 +34,12 @@ AddEventHandler('pl_printer:insertImageData', function(imageUrl, amount)
     -- Validate imageUrl is a non-empty string
     imageUrl = tostring(imageUrl or '')
     if imageUrl == '' then return end
+    -- reject oversized payloads and anything that is not a plain http(s) URL,
+    -- so bogus/abusive strings can't be stored and later handed to clients
+    if #imageUrl > 512 or not imageUrl:match('^https?://') then
+        _debug('[DEBUG] Rejected image URL (length/scheme)')
+        return
+    end
 
     local account   = Config.Print.Account
     local TotalBill = Config.Print.Price * amount
